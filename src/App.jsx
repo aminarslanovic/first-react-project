@@ -1,23 +1,29 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+// import { useState } from "react";
 import "./App.css";
-import MySentence from "./MySentence";
+// import MySentence from "./components/MySentence/MySentence";
+// import Greeting from "./components/Greeting/Greeting";
+import { Navbar } from "./components/Navbar/Navbar";
+import { Footer } from "./components/Footer/Footer";
+import { Route, Routes } from "react-router-dom";
+import Hotels from "./pages/Hotels/Hotels";
+import Hotel from "./pages/Hotel/Hotel";
+import Home from "./pages/Home/Home";
+import Teams from "./pages/Teams/Teams";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [arr, setArr] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  // const [count, setCount] = useState(0);
+  // const [arr, setArr] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
   // const arr = []
   // for (let i = 1; i <= 10; i++) {
   //   arr.push(i);
   // }
 
-  const reverseArr = () => {
-    const _arr = [...arr];
-    const reversed = _arr.reverse();
-    setArr(reversed);
-  };
+  // const reverseArr = () => {
+  //   const _arr = [...arr];
+  //   const reversed = _arr.reverse();
+  //   setArr(reversed);
+  // };
 
   // const osoba = {
   //   name: "Jakub",
@@ -42,40 +48,19 @@ function App() {
   // setCount((prevValue) => prevValue + 3)
   return (
     // <React.Fragment>
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
+    <div className="app">
+      {/* <Greeting appName="Lyntel" fullName="Dzenan Kosuta" /> */}
+      {/* <div className="card">
         <button onClick={() => setCount((prevValue) => prevValue - 1)}>
           decrease count {count}
         </button>
         <button onClick={() => setCount((prevValue) => prevValue + 1)}>
           increase count {count}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <button onClick={reverseArr}>Change order</button>
+      </div> */}
+      {/* <button onClick={reverseArr}>Change order</button> */}
       {/* Ipravno i sa callback */}
-      {/* <button onClick={() => reverseArr()}>Change order</button> */}
-      {/* <MySentence />
-      <MySentence />
-      <MySentence />
-      <MySentence />
-      <MySentence />
-      <MySentence />
-      <MySentence />
-      <MySentence />
-      <MySentence />
-      <MySentence /> */}
+      {/* <button onClick={() => reverseArr()}>Change order</button>
       {arr.map((num, index) => (
         <div
           key={index}
@@ -84,8 +69,18 @@ function App() {
           <p>{num}. </p>
           <MySentence number={num} />
         </div>
-      ))}
-    </>
+      ))} */}
+      <Navbar />
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/hotels" element={<Hotels />} />
+          <Route path="/hotels/:id" element={<Hotel />} />
+          <Route path="/teams" element={<Teams />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
     // </React.Fragment>
   );
 }
